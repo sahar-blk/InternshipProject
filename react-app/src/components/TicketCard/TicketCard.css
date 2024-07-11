@@ -1,0 +1,48 @@
+/* App.css */
+.card {
+    border: 1px solid #ccc;
+    padding: 20px;
+    border-radius: 8px;
+    max-width: 400px;
+  }
+  
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .header h2 {
+    margin: 0;
+  }
+  
+  .assign {
+    background-color: #ffefef;
+    color: #ff4b4b;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 4px;
+  }
+  
+  .tags {
+    display: flex;
+    gap: 10px;
+    margin-top: 20px;
+  }
+  
+  .tag {
+    border: 1px solid #ff4b4b;
+    color: #ff4b4b;
+    background-color: #fff;
+    padding: 5px 10px;
+    border-radius: 20px;
+  }
+  
+  .priority {
+    background-color: #ff4b4b;
+    color: #fff;
+    padding: 5px 10px;
+    border: none;
+    border-radius: 20px;
+  }
+  

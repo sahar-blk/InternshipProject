@@ -5,6 +5,8 @@ import lombok.*;
 import org.hibernate.annotations.DynamicInsert;
 import org.hibernate.annotations.DynamicUpdate;
 
+import java.util.Set;
+
 @Getter
 @Setter
 @AllArgsConstructor
@@ -25,6 +27,12 @@ public class Worker {
     private String poste;
     @Column(name = "role")
     private String role;
+    @Column(name = "email")
+    private String email;
+    @Column(name = "photoProfil")
+    private String photoProfil;
+    @OneToMany( cascade = CascadeType.ALL)
+    private Set<Client> clients;
 
     public Worker(){
 
@@ -33,3 +41,4 @@ public class Worker {
 
 
 }
+

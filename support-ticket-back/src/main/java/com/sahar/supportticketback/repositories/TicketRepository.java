@@ -10,8 +10,12 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 @Repository
 public interface TicketRepository extends JpaRepository<Ticket,Long> {
-    @Query("SELECT a FROM Ticket a WHERE a.etat= : etatTicket")
-    List<Ticket> findByEtatTicket(String etatTicket);
+    //chercher un ticket par son etat
+    List<Ticket> findByEtat(String etat);
+    //chercher la liste des tickets par agent
     List<Ticket> findByAssignedTo(Worker worker);
+    List  <Ticket> findByPriorite(String priorite);
+
 
 }
+

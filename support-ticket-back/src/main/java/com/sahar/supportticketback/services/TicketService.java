@@ -3,7 +3,12 @@ package com.sahar.supportticketback.services;
 import com.sahar.supportticketback.entities.Ticket;
 import com.sahar.supportticketback.entities.Worker;
 import com.sahar.supportticketback.repositories.TicketRepository;
+import com.sahar.supportticketback.repositories.WorkerRepository;
+import jakarta.mail.MessagingException;
+import jakarta.mail.internet.MimeMessage;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -14,6 +19,11 @@ public class TicketService implements ITicketService{
 
     @Autowired
     private TicketRepository ticketRepository;
+    @Autowired
+    private WorkerRepository workerRepository;
+
+    @Autowired
+    private JavaMailSender mailSender;
 
 
     @Override
@@ -23,7 +33,11 @@ public class TicketService implements ITicketService{
 
 
     }
-
+    //chercher ticket par id
+    @Override
+    public Optional<Ticket> getTicketById(Long id) {
+        return ticketRepository.findById(id);
+    }
     @Override
     public void supprimerTicket(Ticket ticket) {
         ticketRepository.delete(ticket);
@@ -36,30 +50,79 @@ public class TicketService implements ITicketService{
 
 
     }
-
+    //liste de tous les tickets
     @Override
     public List<Ticket> getTickets() {
         List<Ticket> t= ticketRepository.findAll();
         return t;
     }
-
+    //liste de tous les tickets par etat
     @Override
     public List<Ticket> getTicketsByEtat(String etat) {
-        List<Ticket> t= ticketRepository.findByEtatTicket(etat);
+        List<Ticket> t= ticketRepository.findByEtat(etat);
+
         return t;
     }
+    //assigner un ticket a un agent
     @Override
-    public void assignTicket(Long ticketId, Worker worker) {
-        Optional<Ticket> optionalTicket = ticketRepository.findById(ticketId);
-        if (optionalTicket.isPresent()) {
-            Ticket ticket = optionalTicket.get();
-            ticket.setAssignedTo(worker);
-            ticketRepository.save(ticket);
-            // Notify the user about the assignment a faaaaaaire
-        } else {
-            // Handle the case where the ticket is not found, e.g., log an error or return a response indicating failure
-            System.out.println("Ticket not found");
+    public void assignWorkerToTicket(Long ticketId, Long workerId) {
+        // Fetch the ticket and worker from the repository
+        Ticket ticket = ticketRepository.findById(ticketId).orElseThrow(() -> new RuntimeException("Ticket not found"));
+        Worker worker = workerRepository.findById(workerId).orElseThrow(() -> new RuntimeException("Worker not found"));
+
+        //assigner un agent a un ticket et modifier l'etat du ticket
+        ticket.setAssignedTo(worker);
+      //  ticket.setEtat("En cours");
+        ticketRepository.save(ticket);
+
+        //Preparer la notification par email
+        try {
+            MimeMessage message = mailSender.createMimeMessage();
+            MimeMessageHelper helper = new MimeMessageHelper(message, true);
+
+            String mailSubject = "New Ticket Assigned to You";
+            String mailContent = "<p>Dear " + worker.getUsername() + ",</p>";
+            mailContent += "<p>You have been assigned a new ticket with ID: " + ticketId + ".</p>";
+            mailContent += "<p>Ticket Status: En cours</p>";
+            mailContent += "<hr><img src='cid:logo'/>";
+
+            helper.setTo(worker.getEmail());
+            helper.setSubject(mailSubject);
+            helper.setText(mailContent, true);
+
+
+
+            // envoie email
+            mailSender.send(message);
+        } catch (MessagingException e) {
+            e.printStackTrace(); // Handle exception properly
         }
     }
 
+    @Override
+    public void changeStateTicket(Ticket ticket) {
+        if (ticket.getEtat().equals("en cours")) {
+            ticket.setEtat("terminé");
+            ticketRepository.save(ticket);
+        }
+    }
+    //filter les tickets par priorite
+    @Override
+    public List<Ticket> getTicketByPriority(String priorite) {
+        return ticketRepository.findByPriorite(priorite);
+    }
+    //changer l'etat du ticket lors du drag and drop
+    @Override
+    public void updateTicketStatus(Long id, String newEtat) throws Exception {
+        Ticket ticket = ticketRepository.findById(id).orElseThrow(() -> new Exception("Ticket not found"));
+        ticket.setEtat(newEtat);
+        ticketRepository.save(ticket);
+    }
+
+
+
 }
+
+
+
+

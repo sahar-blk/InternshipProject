@@ -42,9 +42,9 @@ public class Ticket {
 
 
 
-
+    //mettre par defaut l'etat du ticket en attente lors de la creation
     public Ticket(){
-      this.etat = "en attente";
+        this.etat = "en attente";
 
     }
 
@@ -53,3 +53,4 @@ public class Ticket {
 
 
 }
+

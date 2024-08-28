@@ -1,71 +1,82 @@
-/* App.css */
 .support-ticket-manager {
-    padding: 20px;
+  padding: 20px;
+}
+
+.support-ticket-manager h1 {
+  font-size: 30px;
+  margin-bottom: 10px;
+  margin-left: 10px;
+}
+
+.support-ticket-manager p {
+  margin-bottom: 20px;
+  margin-left: 10px;
+}
+
+.ticket-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.ticket-slide {
+  padding: 10px;
+  box-sizing: border-box;
+}
+
+.enAttente, .enCours, .termine {
+  margin-top: 50px;
+}
+
+.custom-button {
+  background-color: #f44336; /* Red background */
+  border: none;
+  border-radius: 50%; 
+  width: 40px; 
+  height: 40px; 
+  cursor: pointer;
+  outline: none;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); 
+  transition: background-color 0.3s ease;
+  margin-right: 35px; 
+}
+
+.custom-button:hover {
+  background-color: #d32f2f; /* Darker red on hover */
+}
+
+.custom-button-icon {
+  color: white;
+  font-size: 40px; /* Size of the plus icon */
+  line-height: 0.7;
+  display: flex;
+  align-items: center;
+  padding-left: 3px;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+@media (max-width: 1260px) {
+  .ticket-slide {
+    flex: 1 1 calc(50% - 20px); /* 2 cards per row with gap */
   }
-  
-  .support-ticket-manager h1 {
-    font-size: 24px;
-    margin-bottom: 10px;
+}
+
+@media (max-width: 900px) {
+  .ticket-slide {
+    flex: 1 1 100%; /* 1 card per row */
   }
-  
-  .support-ticket-manager p {
-    margin-bottom: 20px;
-  }
-  
-  .support-ticket-manager h2 {
-    font-size: 20px;
-    margin-bottom: 20px;
-  }
-  
-  .ticket-list {
-    display: flex;
-    gap: 20px;
-  }
-  
-  .card {
-    border: 1px solid #ccc;
-    padding: 20px;
-    border-radius: 8px;
-    max-width: 300px;
-  }
-  
+
   .header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+    flex-direction: column;
+    align-items: flex-start;
   }
-  
-  .header h2 {
-    margin: 0;
+
+  .custom-button {
+    margin-top: 10px;
   }
-  
-  .assign {
-    background-color: #ffefef;
-    color: #ff4b4b;
-    border: none;
-    padding: 5px 10px;
-    border-radius: 4px;
-  }
-  
-  .tags {
-    display: flex;
-    gap: 10px;
-    margin-top: 20px;
-  }
-  
-  .tag {
-    border: 1px solid #ff4b4b;
-    color: #ff4b4b;
-    background-color: #fff;
-    padding: 5px 10px;
-    border-radius: 20px;
-  }
-  
-  .priority {
-    background-color: #ff4b4b;
-    color: #fff;
-    padding: 5px 10px;
-    border: none;
-    border-radius: 20px;
-  }
-  
+}

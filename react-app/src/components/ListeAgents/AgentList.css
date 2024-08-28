@@ -1,0 +1,78 @@
+.worker-list {
+    width: 600px;
+    border: 1px solid #0c0c0c;
+    border-radius: 5px;
+    overflow: hidden;
+    font-family: Arial, sans-serif;
+    margin-left: 30%;
+    margin-top: 50px;
+}
+
+.search-input-container {
+    margin: 15px;
+}
+
+.agent-container {
+    width: 550px;
+    height: 500px; /* Set your desired fixed height */
+    margin: 20px 0 10px 30px;
+    overflow-y: auto; /* Enable vertical scrolling */
+}
+
+.worker-item {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    border-bottom: 1px solid #eee;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    position: relative;
+}
+
+.worker-item.selected {
+    background-color: #f0f0f0;
+}
+
+.worker-item:last-child {
+    border-bottom: none;
+}
+
+.profile-image {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+.worker-info {
+    flex: 1;
+}
+
+.worker-name {
+    font-weight: bold;
+    margin-bottom: 5px;
+    margin-left: 5px;
+}
+
+.worker-poste {
+    color: #777;
+    margin-left: 5px;
+}
+
+.assign {
+    color: rgb(247, 52, 52);
+    border: none;
+    background-color:  transparent;
+    font-size: 1rem;
+    border-radius: 4px;
+
+    cursor: pointer;
+    position: absolute;
+    right: 10px;
+    transition: background-color 0.3s ease;
+
+}
+.assign:hover {
+    background-color: red;
+    color: white;
+  }

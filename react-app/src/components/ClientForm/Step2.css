@@ -1,0 +1,65 @@
+/* Centrer la div steptwo-container */
+.steptwo-container {
+    width: 900px;
+    margin: 0 auto;
+    padding: 20px;
+    min-height: 550px; /* Assurez-vous que tous les conteneurs ont la même hauteur minimale */
+}
+
+  
+  .form-control {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  /* Informations sur les Contrats */
+  .steptwo-container h2 {
+    margin-bottom: 15px;
+  }
+  
+  .informations-contrats {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    column-gap: 30px; /* Espace horizontal entre les colonnes */
+    row-gap: 20px;    /* Espace vertical entre les lignes */
+    margin-bottom: 20px;
+  }
+  
+  /* Champs d'entrée */
+  input[type="text"],
+  input[type="date"],
+  input[type="number"],
+  select {
+    width: 100%;
+    padding: 10px;
+    font-size: 14px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    box-sizing: border-box; /* Assure que la largeur inclut le padding et la bordure */
+  }
+  
+  /* Autres ajustements de marge et de padding */
+  label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+  }
+  
+  input,
+  select {
+    margin-bottom: 10px; /* Espacement entre le champ d'entrée et l'élément suivant */
+  }
+  
+  /* Ajout d'un espacement supplémentaire entre les champs spécifiques */
+  .form-control:nth-child(even) {
+    margin-bottom: 20px;
+  }
+  
+  /* Correction pour assurer que tous les champs soient de la même taille */
+  .informations-contrats input[type="text"],
+  .informations-contrats input[type="date"],
+  .informations-contrats input[type="number"],
+  .informations-contrats select {
+    width: calc(100% - 10px); /* Ajuste la largeur pour tenir compte du padding et de la bordure */
+  }
+  

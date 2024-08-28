@@ -1,0 +1,58 @@
+.containerForm {
+    width: 1300px;
+    margin: 20px auto; /* Adjust this value to control the space */
+    padding: 20px;
+    border: 1px solid #080808;
+    border-radius: 15px;
+    min-height: 550px; /* Ajustez cette valeur selon vos besoins */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+/* Button styles */
+.retour,
+.continuer,
+.valider {
+    width: 140px;
+    padding: 8px 12px;
+    font-size: solid;
+    background-color: #f0f0f0;
+    color: red;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+}
+
+.retour:hover,
+.continuer:hover,
+.valider:hover {
+    background-color:red;
+    color: white;
+}
+
+.button-group {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+.retour {
+    margin-right: auto;
+}
+
+.continuer {
+    margin-left: auto;
+}
+
+.valider {
+    margin-left: auto;
+    
+}
+
+

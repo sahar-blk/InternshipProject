@@ -1,0 +1,33 @@
+/* Stepper.css */
+
+.stepper {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+  }
+  
+  .step {
+    flex-grow: 1;
+    text-align: center;
+  }
+  
+  .step-name {
+    font-size: 16px;
+    font-weight: bold;
+  }
+  
+  .step-line {
+    height: 4px;
+    background-color: transparent;
+    margin-top: 5px;
+    transition: background-color 0.3s ease;
+  }
+  
+  .step.active .step-line {
+    background-color: red; /* Active step line color */
+  }
+  
+  .step.active .step-name {
+    color: red; /* Active step name color */
+  }
+  

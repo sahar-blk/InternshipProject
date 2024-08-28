@@ -1,0 +1,122 @@
+/* Step1.css */
+
+/* Centrer la div stepone-container */
+.stepone-container {
+    width: 900px;
+    margin: 0 auto;
+    padding: 20px;
+    min-height: 550px; /* Assurez-vous que tous les conteneurs ont la même hauteur minimale */
+}
+
+.form-control {
+    display: flex;
+    flex-direction: column;
+}
+
+/* Informations Personnelles */
+.stepone-container h2 {
+    margin-bottom: 15px;
+}
+
+.informations-personnelles {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px; /* Espace entre les éléments */
+    margin-bottom: 20px;
+}
+
+.informations-professionnelles {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px; /* Espace entre les éléments */
+    margin-bottom: 20px;
+}
+
+.informations-familiales {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px; /* Espace entre les éléments */
+    margin-bottom: 20px;
+}
+
+/* Champ de date de naissance */
+input[type="date"] {
+    width: 270px;
+    padding: 10px;
+    font-size: 14px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+/* Autres champs d'entrée */
+input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    font-size: 14px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+/* Sections Informations Professionnelles et Informations Familiales */
+.section-container {
+    margin-bottom: 30px;
+}
+
+.section-container h2 {
+    margin-bottom: 15px;
+}
+
+/* Stylisation du TextField pour le nombre d'enfants */
+.MuiTextField-root {
+    width: 100%;
+    margin-bottom: 20px;
+    height: 36px; /* Hauteur ajustée */
+}
+
+.MuiFilledInput-root {
+    border-radius: 5px;
+    background-color: #ffffff;
+    border: 1px solid #ccc;
+    height: 36px; /* Hauteur ajustée pour correspondre au TextField */
+    padding: 0; /* Supprime le padding interne */
+    display: flex;
+    align-items: center; 
+}
+.MuiInputBase-input {
+    padding: 0 12px; /* Ajustement du padding horizontal */
+    height: 36px; /* Ajustement de la hauteur de l'input */
+    display: flex;
+    align-items: center; /* Centre le texte verticalement */
+    text-align: center; /* Centre le texte horizontalement */
+}
+
+/* Ajustement du stepper */
+.MuiInputBase-root {
+    display: flex;
+    justify-content: space-between;
+}
+.MuiFilledInput-root:hover {
+    background-color: #f0f0f0;
+}
+
+.MuiInputLabel-root {
+    color: #333;
+    font-size: 14px; /* Réduire la taille du label si nécessaire */
+    top: -6px; /* Ajuster la position du label */
+}
+
+.MuiInputBase-input {
+    padding: 6px 0; /* Ajustement du padding pour réduire la hauteur */
+    height: 24px; /* Ajustement de la hauteur de l'input */
+}
+
+/* Autres ajustements de marge et de padding */
+label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+input {
+    margin-bottom: 15px;
+}

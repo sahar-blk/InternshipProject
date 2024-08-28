@@ -1,0 +1,50 @@
+.card {
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 16px;
+  margin: 16px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.etat {
+  font-weight: bold;
+}
+
+.etat.orange {
+  color: orange;
+}
+
+.etat.green {
+  color: green;
+}
+
+.tags {
+  margin-top: 16px;
+  height: 34;
+  width: 79;
+}
+
+.problem {
+  display: inline-block;
+  padding: 4px 8px;
+  border: 1px solid red;
+  border-radius: 4px;
+  color: red;
+  font-weight: bold;
+  height: 34;
+  width: 79;
+  
+}
+
+.tags p {
+  margin-top: 8px; /* Add some top margin to separate the text from the tags */
+  margin-left: auto; /* Align to the right within the .tags container */
+  text-align: right; /* Align text to the right */
+  font-weight: bold;
+}

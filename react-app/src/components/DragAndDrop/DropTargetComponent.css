@@ -1,0 +1,10 @@
+.drop-target {
+    padding: 10px;
+    border: 2px dashed transparent;
+    transition: border-color 0.2s ease-in-out;
+  }
+  
+  .drop-target.hover {
+    border-color: #3498db;
+  }
+  

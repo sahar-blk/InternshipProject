@@ -1,24 +1,23 @@
 import React from 'react';
 import { useDrag } from 'react-dnd';
-import { useNavigate } from 'react-router-dom';
-import './TicketCard.css';
+import './TicketCradTraitement.css';
+
+interface Worker {
+  username: string;
+}
 
 interface TicketData {
-  id: number;
   probleme: string;
-  priorite: string;
   probType: string;
-  assignedTo: Worker; // Optional, as it may be null
+  etat: string;
+  assignedTo?: Worker; // Make this optional if it might not always be provided
   onDrop: (newStatus: string) => void;
 }
 
-const TicketCard: React.FC<TicketData> = ({ id, probleme, priorite, probType, assignedTo, onDrop }) => {
-  const navigate = useNavigate();
-
+const TicketCardTraitement: React.FC<TicketData> = ({ probleme, probType, etat, assignedTo, onDrop }) => {
   const [{ isDragging }, drag] = useDrag(() => ({
     type: 'ticket',
-    item: assignedTo ? { id, status: 'En attente' } : undefined,
-    canDrag: !!assignedTo, // Enable dragging only if assignedTo is present
+    item: { id: undefined, status: etat }, // Use current status for dragging
     end: (item, monitor) => {
       const dropResult = monitor.getDropResult<{ status: string }>();
       if (item && dropResult) {
@@ -28,28 +27,33 @@ const TicketCard: React.FC<TicketData> = ({ id, probleme, priorite, probType, as
     collect: (monitor) => ({
       isDragging: monitor.isDragging(),
     }),
-  }), [id, assignedTo]);
+  }), [etat]);
 
-  const handleAssignClick = () => {
-    navigate(`/assign-agent/${id}`);
+  const getEtatClass = (etat: string) => {
+    switch (etat.toLowerCase()) {
+      case 'en cours':
+        return 'etat orange';
+      case 'terminé':
+        return 'etat green';
+      default:
+        return 'etat';
+    }
   };
 
   return (
     <div ref={drag} className="card" style={{ opacity: isDragging ? 0.5 : 1 }}>
       <div className="header">
         <h2>Problème:</h2>
-
-        {!assignedTo && ( // Show button only if not assigned
-          <button className="bouton-assigner" onClick={handleAssignClick}>Assigner</button>
-        )}
+        <div className={getEtatClass(etat)}>{etat}</div>
       </div>
       <p>{probleme}</p>
       <div className="tags">
         <div className="problem">{probType}</div>
-        <div className="priority">{priorite}</div>
+        <p>Assigné à {assignedTo ? assignedTo.username : 'Non attribué'}</p>
       </div>
     </div>
   );
 };
 
-export default TicketCard;
+
+export default TicketCardTraitement;
